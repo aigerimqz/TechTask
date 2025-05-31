@@ -13,10 +13,7 @@ class TaskListView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        queryset = Task.objects.all().order_by('-created_at')
-        if self.request.user.is_authenticated:
-            queryset = queryset.exclude(author=self.request.user)
-        return queryset
+        return Task.objects.filter(user=self.request.user).order_by('-created_at')
 
 class CreateTaskView(generics.CreateAPIView):
     queryset = Task.objects.all()
@@ -24,7 +21,7 @@ class CreateTaskView(generics.CreateAPIView):
     permission_classes = [IsAuthenticated]
   
     def perform_create(self, serializer):
-        serializer.save(author = self.request.user)
+        serializer.save(user = self.request.user)
 
 
 
@@ -40,7 +37,7 @@ class UpdateTaskView(generics.UpdateAPIView):
     permission_classes = [IsAuthenticated]
     
     def perform_update(self, serializer):
-        if self.get_object().author != self.request.user:
+        if self.get_object().user != self.request.user:
             raise PermissionDenied("You can not change post.")
         serializer.save()
 
@@ -51,7 +48,7 @@ class DeleteTaskView(generics.DestroyAPIView):
     permission_classes = [IsAuthenticated]
 
     def perform_destroy(self, instance):
-        if instance.author != self.request.user:
+        if instance.user != self.request.user:
             raise PermissionDenied("You can not delete post.")
         instance.delete()
 
