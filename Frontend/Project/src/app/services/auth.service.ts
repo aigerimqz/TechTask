@@ -7,12 +7,12 @@ import { catchError, map, Observable, of, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://127.0.0.1:8000';
+  private apiUrl = 'http://127.0.0.1:8000/api/';
   constructor(private client: HttpClient) { }
 
   login(userModel: User): Observable<Token>{
     return new Observable(observer => {
-      this.client.post<Token>(`${this.apiUrl}/api/login/`, userModel).subscribe({
+      this.client.post<Token>(`${this.apiUrl}login/`, userModel).subscribe({
         next: (token) => {
           localStorage.setItem('token', token.access);
           observer.next(token);
