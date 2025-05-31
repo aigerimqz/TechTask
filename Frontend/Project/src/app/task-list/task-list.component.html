@@ -1,1 +1,9 @@
-<p>task-list works!</p>
+<div class="container">
+    <div *ngIf="isLoading" class="loading__block">
+        Loading...
+    </div>
+    <div class="task__list" *ngFor="let task of tasks">
+        <p>{{task.title}}</p>
+
+    </div>
+</div>
