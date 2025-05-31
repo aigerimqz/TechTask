@@ -1,9 +1,41 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Token, User } from '../../models';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private apiUrl = 'http://127.0.0.1:8000';
+  constructor(private client: HttpClient) { }
 
-  constructor() { }
+  login(userModel: User): Observable<Token>{
+    return new Observable(observer => {
+      this.client.post<Token>(`${this.apiUrl}/api/login/`, userModel).subscribe({
+        next: (token) => {
+          localStorage.setItem('token', token.access);
+          observer.next(token);
+          observer.complete();
+        },
+        error: err => observer.error(err)
+      })
+    })
+
+  }
+
+  isLoggedIn(): boolean{
+    return !!localStorage.getItem('token');
+  }
+  getCurrentUser(): User | null{
+    const user = localStorage.getItem('currentUser');
+    return user ? JSON.parse(user): null;
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+  logout() {
+    localStorage.removeItem('token');
+  }
 }
