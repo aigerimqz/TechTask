@@ -14,19 +14,21 @@ export class TaskService {
     return this.client.get<Task[]>(this.apiUrl);
   }
 
-  getTask(id: number):Observable<Task>{
+  
+  getTask(id: number): Observable<Task>{
     return this.client.get<Task>(`${this.apiUrl}${id}/`);
   }
 
-  createTask(formData: FormData):Observable<any> {
-    return this.client.post(`${this.apiUrl}/tasks/`, formData);
-  }
-  
-  updateTask(id: number, task: Partial<Task>): Observable<Task> {
-    return this.client.patch<Task>(`${this.apiUrl}/tasks/${id}/`, task);
+  createPost(formData: FormData): Observable<any> {
+    
+    return this.client.post(`${this.apiUrl}create/`, formData);
   }
 
-  deleteTask(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/tasks/${id}/`);
+  updatePost(id: number, postData: FormData): Observable<Task> {
+    return this.client.put<Task>(`${this.apiUrl}${id}/update/`, postData);
+  }
+
+  deletePost(id: number): Observable<any>{
+    return this.client.delete(`${this.apiUrl}${id}/delete/`);
   }
 }
