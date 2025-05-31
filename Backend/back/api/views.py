@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from .models import Task
-from .serializers import TaskSerializer
-from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth.models import User
+from .serializers import TaskSerializer, RegisterSerializer
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.exceptions import PermissionDenied
 from rest_framework import generics
 
@@ -52,7 +53,11 @@ class DeleteTaskView(generics.DestroyAPIView):
             raise PermissionDenied("You can not delete post.")
         instance.delete()
 
-
+class RegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = RegisterSerializer
+    permission_classes = [AllowAny]
+    authentication_classes = []
 # class TaskListCreateView(generics.ListCreateAPIView):
 #     serializer_class = TaskSerializer
 #     permission_classes = [IsAuthenticated]
