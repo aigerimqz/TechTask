@@ -1,13 +1,39 @@
 <div class="container">
-    <div class="auth__part">
-        <h1>Login</h1>
-        <div class="auth__form">
-            <form class="form" action="">
-                <input class="input__email input" type="email" name="" id="">
-                <input class="input__pass input" type="password">
-                <button class="loginBtn">Login</button>
+    <section id="login">
+        
+        <div class="form__block">
+            <div class="form__title">
+                <h2>Login</h2>
+            </div>
+            <form (ngSubmit)="onLogin()" class="login__form">
+                <div class="form-group">
+                    <input class="input input__username" 
+                            name="username" 
+                            [(ngModel)]="userModel.username" 
+                            required 
+                            type="text" 
+                            placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input class="input input__password" 
+                            name="password" 
+                            [(ngModel)]="userModel.password" 
+                            required 
+                            type="password" 
+                            placeholder="Password">
+                </div>
+                <button class="form__btn" type="submit" >
+                    Login
+                    
+                </button>
+                <div class="error-message" *ngIf="errorMessage">
+                    {{errorMessage}}
+                </div>
+                <div class="register-link">
+                    Don't have an account? <a routerLink="/register">Register</a>
+                </div>
             </form>
-
         </div>
-    </div>
+      
+    </section>
 </div>
