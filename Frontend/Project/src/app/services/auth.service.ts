@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Token, User } from '../../models';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +37,21 @@ export class AuthService {
   }
   logout() {
     localStorage.removeItem('token');
+  }
+
+  register(userData: any): Observable<any> {
+    return this.client.post(`${this.apiUrl}register/`, userData).pipe(
+      map(response => {
+  
+        return response;
+      }),
+      catchError(error => {
+       
+        if (error.status === 201) {
+          return of(error.error); 
+        }
+        return throwError(() => error);
+      })
+    );
   }
 }
