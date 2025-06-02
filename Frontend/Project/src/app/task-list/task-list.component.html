@@ -1,12 +1,22 @@
 <div class="container">
-    <div *ngIf="isLoading" class="loading__block">
-        Loading...
-    </div>
-    <button (click)="createTask()">Create Task</button>
+  <div *ngIf="isLoading" class="loading__block">
+      Loading...
+  </div>
 
-    <div class="task__list" *ngFor="let task of tasks">
-        <p>{{task?.title}}</p>
-        <!-- <button (click)="viewTaskDetail(task.id)">Go to task</button> -->
+  <button (click)="createTask()">Create Task</button>
 
-    </div>
+
+  <div class="task__row">
+      <p class="task__name row"><img src="task.png" alt=""> Task Name</p>
+      <p class="task__desc row"><img src="name.png" alt=""> Description</p>
+      <p class="task__type row"><img src="type1.png" alt=""> Type</p>
+      <p class="task__date row"><img src="date1.png" alt=""> Date</p>
+  </div>
+
+  <div class="task__list" *ngFor="let task of tasks">
+      <p class="task__name">{{ task?.title }}</p>
+      <p class="task__desc">{{ task.description }}</p>
+      <p class="task__type">{{task.status}}</p>
+      <p class="task__date">{{ task.updated_at | date: 'medium' }}</p>
+  </div>
 </div>

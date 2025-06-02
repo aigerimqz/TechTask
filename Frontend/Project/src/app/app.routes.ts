@@ -8,9 +8,11 @@ import { UpdateTaskComponent } from './update-task/update-task.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 
 export const routes: Routes = [
-    {path: '', 
+    {
+        path: '',
         component: HomeComponent,
         children: [
+            {path: '', component: TaskListComponent},
             {path: 'tasks', component: TaskListComponent},
             {path: 'tasks/create', component: CreateTaskComponent},
             {path: 'tasks/:id/update', component: UpdateTaskComponent},
