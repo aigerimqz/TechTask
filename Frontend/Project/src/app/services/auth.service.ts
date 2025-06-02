@@ -10,19 +10,48 @@ export class AuthService {
   private apiUrl = 'http://127.0.0.1:8000/api/';
   constructor(private client: HttpClient) { }
 
-  login(userModel: User): Observable<Token>{
-    return new Observable(observer => {
-      this.client.post<Token>(`${this.apiUrl}login/`, userModel).subscribe({
-        next: (token) => {
-          localStorage.setItem('token', token.access);
-          observer.next(token);
-          observer.complete();
-        },
-        error: err => observer.error(err)
-      })
-    })
+  // login(userModel: User): Observable<Token>{
+  //   return new Observable(observer => {
+  //     this.client.post<Token>(`${this.apiUrl}login/`, userModel).subscribe({
+  //       next: (token) => {
+  //         localStorage.setItem('token', token.access);
+  //         localStorage.setItem('currentUser', JSON.stringify(userModel)); 
+  //         observer.next(token);
+  //         observer.complete();
+  //       },
+  //       error: err => observer.error(err)
+  //     })
+  //   })
 
-  }
+  // }
+  login(userModel: User): Observable<Token> {
+  return new Observable(observer => {
+    this.client.post<Token>(`${this.apiUrl}login/`, userModel).subscribe({
+      next: (token) => {
+        localStorage.setItem('token', token.access);
+
+        
+        this.client.get<User>(`${this.apiUrl}profile/`, {
+          headers: {
+            Authorization: `Bearer ${token.access}`
+          }
+        }).subscribe({
+          next: (user) => {
+            localStorage.setItem('currentUser', JSON.stringify(user)); 
+            observer.next(token);
+            observer.complete();
+          },
+          error: err => {
+            console.error('Ошибка при получении профиля', err);
+            observer.error(err);
+          }
+        });
+      },
+      error: err => observer.error(err)
+    });
+  });
+}
+
 
   isLoggedIn(): boolean{
     return !!localStorage.getItem('token');

@@ -1,0 +1,17 @@
+.container {
+    max-width: 1120px;
+    margin: 50px auto;
+}
+.home__block {
+    padding: 50px;
+    border-radius: 30px;
+
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.home__tittle {
+    margin: 0;
+}
+.home__text {
+}
+.tasks {
+}

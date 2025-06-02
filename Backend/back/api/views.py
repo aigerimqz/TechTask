@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from .models import Task
 from django.contrib.auth.models import User
-from .serializers import TaskSerializer, RegisterSerializer
+from .serializers import TaskSerializer, RegisterSerializer, UserSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.exceptions import PermissionDenied
 from rest_framework import generics
 
 # Create your views here.
+
+
+
 class TaskListView(generics.ListAPIView):
    
     serializer_class = TaskSerializer
@@ -58,6 +61,14 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
     permission_classes = [AllowAny]
     authentication_classes = []
+
+class CurrentUserView(generics.RetrieveAPIView):
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user
+
 # class TaskListCreateView(generics.ListCreateAPIView):
 #     serializer_class = TaskSerializer
 #     permission_classes = [IsAuthenticated]

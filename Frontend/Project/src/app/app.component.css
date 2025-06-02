@@ -1,0 +1,42 @@
+
+.container {
+    max-width: 1020px;
+    margin: 30px auto;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.title__nav{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    color: #27296d;
+    font-weight: 800;
+    font-size: 36px;
+
+
+}
+.icon__nav{
+    width: 36px;
+    margin-right: 12px;
+}
+.btn__nav{
+    padding: 10px 30px;
+    border-radius: 12px;
+    border: none;
+    background-color: #27296d;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    transition: transform ease-in-out 0.2s;
+
+}
+.btn__nav:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+    background-color: #5e63b6;
+}

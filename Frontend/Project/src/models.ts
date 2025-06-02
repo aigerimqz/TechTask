@@ -1,14 +1,14 @@
 export interface User {
-    id?: number;
+    id: number;
     username: string;
-    email?: string;
+    email: string;
     password: string;
     first_name: string;
     last_name: string;
 }
 
 export interface Task{
-    id?: number;
+    id: number;
     title: string;
     description: string;
     user: User;
