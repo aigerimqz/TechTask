@@ -48,7 +48,7 @@ export class CreateTaskComponent {
       user: userId
     };
 
-    this.taskService.createPost(newTask).subscribe({
+    this.taskService.createTask(newTask).subscribe({
       next: () => this.router.navigate(['/tasks']),
       error: err => console.error('Ошибка при создании задачи', err)
     });

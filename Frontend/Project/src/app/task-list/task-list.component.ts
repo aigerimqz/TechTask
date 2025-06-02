@@ -3,11 +3,12 @@ import { Task } from '../../models';
 import { TaskService } from '../services/task.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css'
 })
@@ -52,10 +53,25 @@ export class TaskListComponent implements OnInit{
   }
 
   deleteTask(id: number) {
-    this.taskService.deletePost(id).subscribe(() => {
+    this.taskService.deleteTask(id).subscribe(() => {
       this.loadTasks();
     })
   }
+
+  updateStatus(task: Task): void {
+  const formData = new FormData();
+  formData.append('title', task.title);
+  formData.append('description', task.description);
+  formData.append('status', task.status);
+
+  formData.append('user', task.user.id.toString());
+
+  this.taskService.updateTask(task.id, formData).subscribe({
+    next: () => console.log('Status updated'),
+    error: (err) => console.error('Error on updating', err)
+  });
+}
+
 
 
   

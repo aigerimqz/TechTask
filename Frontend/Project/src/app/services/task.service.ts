@@ -19,16 +19,16 @@ export class TaskService {
     return this.client.get<Task>(`${this.apiUrl}${id}/`);
   }
 
-  createPost(formData: FormData): Observable<any> {
+  createTask(formData: FormData): Observable<any> {
     
     return this.client.post(`${this.apiUrl}create/`, formData);
   }
 
-  updatePost(id: number, postData: FormData): Observable<Task> {
+  updateTask(id: number, postData: FormData): Observable<Task> {
     return this.client.put<Task>(`${this.apiUrl}${id}/update/`, postData);
   }
 
-  deletePost(id: number): Observable<any>{
+  deleteTask(id: number): Observable<any>{
     return this.client.delete(`${this.apiUrl}${id}/delete/`);
   }
 }
