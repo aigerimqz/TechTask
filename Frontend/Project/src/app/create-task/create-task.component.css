@@ -1,0 +1,26 @@
+.container {
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+.form__group {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    justify-content: flex-start;
+}
+.input{
+    border-radius: 20px;
+    border: 1px solid #C8C8C8;
+}
+
+.form__label{
+    margin-right: 20px;
+}
+.form__input {
+    
+}
+.form__text {
+}
+.create__btn {
+}

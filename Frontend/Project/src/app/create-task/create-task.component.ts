@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, EventEmitter, NgModule, Output } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { Task } from '../../models';
 import { TaskService } from '../services/task.service';
@@ -21,6 +21,7 @@ export class CreateTaskComponent {
     status: 'todo'
   };
 
+  @Output() taskCreated = new EventEmitter<void>();
   constructor(private taskService: TaskService, private router: Router) {}
 
   getUserIdFromToken(): number | null {
@@ -39,7 +40,7 @@ export class CreateTaskComponent {
   onSubmit(): void {
     const userId = this.getUserIdFromToken();
     if (!userId) {
-      alert('Пользователь не авторизован');
+      alert('User is not authorized');
       return;
     }
 
@@ -49,8 +50,10 @@ export class CreateTaskComponent {
     };
 
     this.taskService.createTask(newTask).subscribe({
-      next: () => this.router.navigate(['/tasks']),
-      error: err => console.error('Ошибка при создании задачи', err)
+      next: () => {
+        this.taskCreated.emit();
+      },
+      error: err => console.error('Error on creating task', err)
     });
   }
 }
