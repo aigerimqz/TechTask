@@ -17,10 +17,10 @@
   <div class="task__list" *ngFor="let task of tasks">
       <p class="task__name">{{ task?.title }}</p>
       <p class="task__desc">{{ task.description }}</p>
-      <select class="task__type" [(ngModel)]="task.status" (change)="updateStatus(task)">
-        <option value="todo">To Do</option>
-        <option value="in_progress">In Progress</option>
-        <option value="done">Done</option>
+      <select class="task__type type__select" [(ngModel)]="task.status" (change)="updateStatus(task)">
+        <option class="task__option" value="todo">To Do</option>
+        <option class="task__option" value="in_progress">In Progress</option>
+        <option class="task__option" value="done">Done</option>
       </select>
       <p class="task__date">{{ task.updated_at | date: 'medium' }}</p>
 

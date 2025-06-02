@@ -32,6 +32,7 @@
     font-size: 16px;
     font-weight: bold;
     color: #C8C8C8;
+ 
 }
 
 .row {
@@ -51,6 +52,7 @@
     align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid #e0e0e0;
+    margin-left: 10px;
 }
 
 .task__name,
@@ -74,9 +76,21 @@
     width: 17.5%;
 }
 
+.task__option{
+    
+}
+.type__select{
+    border-radius: 20px;
+    border: 1px solid #C8C8C8;
+    padding: 7px 7px;
+    width: 120px;
+    margin-right: 74.34px;
+}
 .task__action{
     width: 17.5%;
     margin-left: 10px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .task__date{
@@ -92,6 +106,7 @@
     border: none;
     background: none;
     transition: transform 0.2s ease-in;
+    margin: 0 5px;
     
 }
 .task__btn:hover{
