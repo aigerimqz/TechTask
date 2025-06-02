@@ -3,10 +3,11 @@
         <h1 class="home__tittle">Welcome {{currentUser.first_name}}!</h1>
         <p class="home__text">Here you can create own tasks</p>
         <div class="tasks">
-            <app-task-list></app-task-list>
+            <!-- <app-task-list></app-task-list> -->
+            <router-outlet></router-outlet>
         </div>
     </div>
     
 </div>
 
-<router-outlet></router-outlet>
+

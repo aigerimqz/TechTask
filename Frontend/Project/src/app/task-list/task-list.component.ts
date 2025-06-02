@@ -39,8 +39,18 @@ export class TaskListComponent implements OnInit{
     })
   }
 
-  viewTaskDetail(id: number): void{
-    this.router.navigate(['/tasks', id]);
+  // viewTaskDetail(id: number): void{
+  //   this.router.navigate(['/tasks/', id]);
+  // }
+
+  createTask():void {
+    this.router.navigate(['/tasks/create']);
   }
+
+  editTask(id: number) {
+    this.router.navigate(['/tasks/${id}/update']);
+  }
+
+
   
 }

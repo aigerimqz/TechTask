@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TaskListComponent, RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

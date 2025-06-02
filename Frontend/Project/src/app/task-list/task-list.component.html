@@ -2,10 +2,11 @@
     <div *ngIf="isLoading" class="loading__block">
         Loading...
     </div>
+    <button (click)="createTask()">Create Task</button>
+
     <div class="task__list" *ngFor="let task of tasks">
         <p>{{task?.title}}</p>
-        <button (click)="viewTaskDetail(task.id)">Go to task</button>
-
+        <!-- <button (click)="viewTaskDetail(task.id)">Go to task</button> -->
 
     </div>
 </div>
