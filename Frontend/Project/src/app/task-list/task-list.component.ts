@@ -51,11 +51,11 @@ export class TaskListComponent implements OnInit{
     this.router.navigate(['/tasks/${id}/update']);
   }
 
-  // deleteTask(id: number) {
-  //   this.taskService.deletePost(id).subscribe(() => {
-  //     this.loadTasks();
-  //   })
-  // }
+  deleteTask(id: number) {
+    this.taskService.deletePost(id).subscribe(() => {
+      this.loadTasks();
+    })
+  }
 
 
   

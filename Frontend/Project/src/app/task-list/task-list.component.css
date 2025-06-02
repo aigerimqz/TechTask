@@ -11,10 +11,10 @@
     font-size: 18px;
 }
 
-button {
+.create__btn {
     padding: 10px 20px;
     margin-bottom: 20px;
-    background-color: #4CAF50;
+    background-color: #27296d;
     color: white;
     border: none;
     border-radius: 6px;
@@ -26,6 +26,7 @@ button {
 .task__row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 12px 0;
     border-bottom: 2px solid #ccc;
     font-size: 16px;
@@ -47,6 +48,7 @@ button {
 .task__list {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid #e0e0e0;
 }
@@ -63,19 +65,40 @@ button {
 }
 
 .task__name {
-    width: 20%;
+    width: 17.5%;
 }
 .task__desc {
-    width: 40%;
+    width: 30%;
 }
 .task__type {
-    width: 20%;
+    width: 17.5%;
+}
+
+.task__action{
+    width: 17.5%;
+    margin-left: 10px;
 }
 
 .task__date{
-    width: 20%;
+    width: 17.5%;
 }
 
 .task__list:hover {
     background-color: #f9f9f9;
+}
+
+
+.task__btn{
+    border: none;
+    background: none;
+    transition: transform 0.2s ease-in;
+    
+}
+.task__btn:hover{
+    filter: brightness(0.8);
+    cursor: pointer;
+    transform: scale(1.02);
+}
+.task__btn img{
+    width: 24px;
 }

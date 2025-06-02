@@ -3,7 +3,7 @@
       Loading...
   </div>
 
-  <button (click)="createTask()">Create Task</button>
+  <button class="create__btn" (click)="createTask()">Create Task</button>
 
 
   <div class="task__row">
@@ -11,12 +11,18 @@
       <p class="task__desc row"><img src="name.png" alt=""> Description</p>
       <p class="task__type row"><img src="type1.png" alt=""> Type</p>
       <p class="task__date row"><img src="date1.png" alt=""> Date</p>
+      <p class="task__action row"></p>
   </div>
 
   <div class="task__list" *ngFor="let task of tasks">
       <p class="task__name">{{ task?.title }}</p>
       <p class="task__desc">{{ task.description }}</p>
-      <p class="task__type">{{task.status}}</p>
+      <p class="task__type">{{ task.status }}</p>
       <p class="task__date">{{ task.updated_at | date: 'medium' }}</p>
+
+      <div class="task__action">
+        <button class="btn__edit task__btn" (click)="editTask(task.id)"><img src="edit.png" alt=""></button>
+        <button class="btn__delete task__btn" (click)="deleteTask(task.id)"><img src="delete.png" alt=""></button>
+      </div>
   </div>
 </div>
