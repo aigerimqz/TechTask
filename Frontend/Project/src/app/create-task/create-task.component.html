@@ -1,13 +1,14 @@
 <div class="container">
-  <h2>Create New Task</h2>
+  <!-- <h2>Create New Task</h2> -->
 
-  <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+  <form class="form" (ngSubmit)="onSubmit()" #taskForm="ngForm">
     <div class="form__group">
-      <label class="form__label" for="title">Title:</label>
+      <!-- <label class="form__label" for="title">Title:</label> -->
       <input
         type="text"
         id="title"
         name="title"
+        placeholder="Task Title"
         class="form__input input"
         [(ngModel)]="task.title"
         required
@@ -15,10 +16,11 @@
     </div>
 
     <div class="form__group">
-      <label class="form__label" for="description">Description:</label>
+      <!-- <label class="form__label" for="description">Description:</label> -->
       <textarea
         id="description"
         name="description"
+        placeholder="Description"
         class="form__text input"
         [(ngModel)]="task.description"
         required
@@ -26,12 +28,12 @@
     </div>
 
     <div class="form__group">
-      <label for="status">Status:</label>
+      <!-- <label for="status">Status:</label>
       <select id="status" name="status" [(ngModel)]="task.status">
         <option value="todo">To Do</option>
         <option value="in_progress">In Progress</option>
         <option value="done">Done</option>
-      </select>
+      </select> -->
     </div>
 
     <button class="create__btn" type="submit">Create Task</button>

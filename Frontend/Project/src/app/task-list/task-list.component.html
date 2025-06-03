@@ -15,8 +15,8 @@
   </div>
 
   <div class="task__list" *ngFor="let task of tasks">
-      <p class="task__name">{{ task?.title }}</p>
-      <p class="task__desc">{{ task.description }}</p>
+      <p class="task__name task_name_text">{{ task?.title }}</p>
+      <p class="task__desc task_desc_text">{{ task.description }}</p>
       <select class="task__type type__select" [(ngModel)]="task.status" (change)="updateStatus(task)">
         <option class="task__option" value="todo">To Do</option>
         <option class="task__option" value="in_progress">In Progress</option>

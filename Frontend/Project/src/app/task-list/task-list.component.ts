@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models';
 import { TaskService } from '../services/task.service';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterOutlet],
+  imports: [CommonModule, FormsModule],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css'
 })
@@ -53,22 +53,36 @@ export class TaskListComponent implements OnInit{
   }
 
   deleteTask(id: number) {
-    this.taskService.deleteTask(id).subscribe(() => {
-      this.loadTasks();
-    })
+    if (confirm('Are you sure you want to delete this task?')) {
+      this.taskService.deleteTask(id).subscribe({
+        next: () => this.loadTasks(),
+        error: (err) => console.error('Error deleting task', err)
+      });
+    }
   }
 
   updateStatus(task: Task): void {
-  const formData = new FormData();
-  formData.append('title', task.title);
-  formData.append('description', task.description);
-  formData.append('status', task.status);
+  if (!task || !task.id || task.status === undefined) {
+    console.error('Invalid task data:', task);
+    return;
+  }
 
-  formData.append('user', task.user.id.toString());
+  const previousStatus = task.status;
+  
+  const updateData = {
+    status: task.status
+  };
 
-  this.taskService.updateTask(task.id, formData).subscribe({
-    next: () => console.log('Status updated'),
-    error: (err) => console.error('Error on updating', err)
+  this.taskService.updateTask(task.id, updateData).subscribe({
+    next: (updatedTask) => {
+      console.log('Status updated successfully', updatedTask);
+      Object.assign(task, updatedTask);
+    },
+    error: (err) => {
+      console.error('Error updating status:', err);
+      task.status = previousStatus;
+      alert('Failed to update task status. Please try again.');
+    }
   });
 }
 
