@@ -38,6 +38,10 @@
     background: none;
     margin-bottom: 20px;
 }
+.input:hover {
+    border-color: #927cf4;
+    box-shadow: 0 0 4px #a084e866;
+}
 .input:focus{
     outline:#6b50e3;
 }
@@ -77,4 +81,8 @@
     text-decoration: none;
     color:#816be7;
     font-weight: 500;
+}
+
+.register-link a:hover{
+    text-decoration: underline 1px solid #816be7;
 }

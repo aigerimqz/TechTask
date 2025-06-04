@@ -146,3 +146,7 @@
     color:#816be7;
     font-weight: 500;
 }
+
+.login-link a:hover{
+    text-decoration: underline 1px solid #816be7;
+}

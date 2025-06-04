@@ -10,20 +10,7 @@ export class AuthService {
   private apiUrl = 'http://127.0.0.1:8000/api/';
   constructor(private client: HttpClient) { }
 
-  // login(userModel: User): Observable<Token>{
-  //   return new Observable(observer => {
-  //     this.client.post<Token>(`${this.apiUrl}login/`, userModel).subscribe({
-  //       next: (token) => {
-  //         localStorage.setItem('token', token.access);
-  //         localStorage.setItem('currentUser', JSON.stringify(userModel)); 
-  //         observer.next(token);
-  //         observer.complete();
-  //       },
-  //       error: err => observer.error(err)
-  //     })
-  //   })
-
-  // }
+  
   login(userModel: User): Observable<Token> {
   return new Observable(observer => {
     this.client.post<Token>(`${this.apiUrl}login/`, userModel).subscribe({
