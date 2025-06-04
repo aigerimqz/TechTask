@@ -46,6 +46,8 @@
     
     
 }
+
+
 .create__btn {
   background-color: #ffffff;
   border-radius: 25px;
@@ -59,7 +61,7 @@
   height: 48px;
   padding: 0 10px;
   text-align: center;
-  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+ 
   transition: all .5s;
   user-select: none;
   -webkit-user-select: none;
