@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 from datetime import timedelta
 
@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-y8yn5mtfh-4t!*m)55_-8@5)(g*t7d6ay96)id0)*zr4ott$&r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "https://taskily.onrender.com",
+    "127.0.0.1"
+]
 
 
 # Application definition
@@ -60,6 +63,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://sub.example.com",
     "http://localhost:4200",
     "http://127.0.0.1:9000",
+    "https://taskily-iota.vercel.app",
 ]
 
 REST_FRAMEWORK = {
@@ -134,6 +138,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
