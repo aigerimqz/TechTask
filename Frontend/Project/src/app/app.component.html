@@ -1,6 +1,6 @@
 <div class="container">
     <div class="header">
-        <a class="title__nav" routerLink="/"><img src="icon1.png" class="icon__nav" alt=""> Taskily</a>
+        <a class="title__nav" routerLink="/home"><img src="icon1.png" class="icon__nav" alt=""> Taskily</a>
         <button *ngIf="!authService.isLoggedIn()" class="btn__nav" routerLink="/login">Login</button>
         <button *ngIf="authService.isLoggedIn()" (click)="logout()" class="btn__nav">Log Out</button>
     </div>
