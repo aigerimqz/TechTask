@@ -28,5 +28,26 @@
         <button class="btn__edit task__btn" (click)="editTask(task.id)"><img src="edit.png" alt=""></button>
         <button class="btn__delete task__btn" (click)="deleteTask(task.id)"><img src="delete.png" alt=""></button>
       </div>
+
+
+      <div *ngIf="editedTask && editedTask.id === task.id" class="task-edit">
+        <input type="text" [(ngModel)]="editedTask.title" class="task__name">
+        <textarea [(ngModel)]="editedTask.description" class="task__desc"></textarea>
+        <select [(ngModel)]="editedTask.status" class="task__type">
+            <option value="todo">To Do</option>
+            <option value="in_progress">In Progress</option>
+            <option value="done">Done</option>
+        </select>
+        <div class="task__date">{{ task.updated_at | date:'medium' }}</div>
+        <div class="task__action">
+            <button (click)="saveTask()">Save</button>
+            <button (click)="cancelEditing()">Cancel</button>
+        </div>
+    </div>
+      
   </div>
+
+  
+
+  
 </div>

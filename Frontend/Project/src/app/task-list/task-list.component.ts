@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models';
 import { TaskService } from '../services/task.service';
-import { Router} from '@angular/router';
+import { Router, RouterOutlet} from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -15,6 +15,8 @@ import { FormsModule } from '@angular/forms';
 export class TaskListComponent implements OnInit{
   tasks: Task[] = [];
   isLoading = true;
+  editedTask: Task | null = null;
+  originalTask: Task | null = null;
   constructor(
     private taskService: TaskService,
     private router: Router
@@ -39,17 +41,47 @@ export class TaskListComponent implements OnInit{
       }
     })
   }
+  startEditing(task: Task): void {
+    this.originalTask = {...task};
+    this.editedTask = {...task};
+  }
+  cancelEditing(): void {
+    if (this.originalTask) {
+      const index = this.tasks.findIndex(t => t.id === this.originalTask?.id);
 
-  // viewTaskDetail(id: number): void{
-  //   this.router.navigate(['/tasks/', id]);
-  // }
+      if (index !== -1) {
+        this.tasks[index] = this.originalTask;
+      }
+    }
+    this.editedTask = null;
+    this.originalTask = null;
+  }
+
+  saveTask(): void {
+    if (!this.editedTask) return;
+
+    this.taskService.updateTask(this.editedTask.id, this.editedTask).subscribe({
+      next: (updatedTask) => {
+        const index = this.tasks.findIndex(t => t.id === updatedTask.id);
+        if(index !== -1) {
+          this.tasks[index] = updatedTask;
+        }
+        this.editedTask = null;
+        this.originalTask = null;
+      },
+      error: (err) => {
+        console.error('Error updaing task', err);
+        this.cancelEditing();
+      }
+    });
+  }
 
   createTask():void {
-    this.router.navigate(['/tasks/create']);
+    this.router.navigate([`/tasks/create`]);
   }
 
   editTask(id: number) {
-    this.router.navigate(['/tasks/${id}/update']);
+    this.router.navigate([`/tasks/${id}/update`]);
   }
 
   deleteTask(id: number) {
