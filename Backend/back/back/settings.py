@@ -27,9 +27,10 @@ SECRET_KEY = 'django-insecure-y8yn5mtfh-4t!*m)55_-8@5)(g*t7d6ay96)id0)*zr4ott$&r
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "https://taskily.onrender.com",
+    
     "taskily.onrender.com",
     "127.0.0.1",
+    "localhost",
 ]
 
 
@@ -66,6 +67,13 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:9000",
     "https://taskily-iota.vercel.app",
 ]
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://taskily-iota.vercel.app"
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
