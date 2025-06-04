@@ -7,7 +7,7 @@ import { catchError, map, Observable, of, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://127.0.0.1:8000/api/';
+  private apiUrl = 'https://taskily.onrender.com/api/';
   constructor(private client: HttpClient) { }
 
   

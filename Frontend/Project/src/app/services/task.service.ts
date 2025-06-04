@@ -7,7 +7,8 @@ import { Task } from '../../models';
   providedIn: 'root'
 })
 export class TaskService {
-  private apiUrl = 'http://127.0.0.1:8000/api/tasks/';
+  private apiUrl = 'https://taskily.onrender.com/api/tasks/';
+  
   constructor(private client: HttpClient  ) { }
 
   getTasks():Observable<Task[]>{
