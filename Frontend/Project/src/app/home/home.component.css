@@ -4,8 +4,9 @@
 }
 .home__block {
     padding: 50px;
+    margin-bottom: 100px;
     border-radius: 30px;
-
+    background-color: white;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .home__tittle {

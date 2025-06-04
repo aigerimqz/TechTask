@@ -4,3 +4,24 @@
 *{
     font-family: 'Montserrat', sans-serif;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    
+    background-image: url('../public/bg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+}
+
+
+app-root {
+    display: block;
+    height: 100%;
+    
+    
+
+}
