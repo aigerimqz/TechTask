@@ -1,7 +1,5 @@
 <div class="container">
-  <div *ngIf="isLoading" class="loading__block">
-      Loading...
-  </div>
+  
 
   <!-- <button class="create__btn" (click)="createTask()">Create Task</button>
   <router-outlet></router-outlet> -->
@@ -13,6 +11,12 @@
       <p class="task__date row"><img src="date1.png" alt=""> Date</p>
       <p class="task__action row"></p>
   </div>
+  <div class="loading__part">
+      <div *ngIf="isLoading" class="loading__block">
+      
+    </div>
+  </div>
+  
 
   <div class="task__list" *ngFor="let task of tasks">
       <p class="task__name task_name_text">{{ task?.title }}</p>

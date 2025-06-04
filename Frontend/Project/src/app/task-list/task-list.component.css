@@ -4,13 +4,30 @@
     font-family: Arial, sans-serif;
 }
 
-.loading__block {
-    text-align: center;
-    padding: 20px;
-    color: #777;
-    font-size: 18px;
-}
 
+.loading__part{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    padding-top: 50px;
+
+}
+.loading__block {
+    
+    padding: 20px;
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: 
+        radial-gradient(farthest-side,#5E63B6 94%,#0000) top/8px 8px no-repeat,
+        conic-gradient(#0000 30%,#5E63B6);
+    -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+    animation: l13 1s infinite linear;
+}
+@keyframes l13{ 
+  100%{transform: rotate(1turn)}
+}
 .task__row, .task__list {
     display: grid;
     grid-template-columns: 17.5% 30% 17.5% 17.5% 17.5%;
