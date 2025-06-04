@@ -5,18 +5,18 @@ import { RegisterComponent } from './register/register.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { UpdateTaskComponent } from './update-task/update-task.component';
-import { TaskDetailComponent } from './task-detail/task-detail.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
     {
         path: '',
         component: HomeComponent,
         children: [
-            {path: '', component: TaskListComponent},
-            {path: 'tasks', component: TaskListComponent},
-            {path: 'tasks/create', component: CreateTaskComponent},
-            {path: 'tasks/:id/update', component: UpdateTaskComponent},
-            {path: 'tasks/:id', component: TaskDetailComponent},
+            {path: '', component: TaskListComponent, canActivate: [authGuard]},
+            {path: 'tasks', component: TaskListComponent, canActivate: [authGuard]},
+            {path: 'tasks/create', component: CreateTaskComponent, canActivate: [authGuard]},
+            {path: 'tasks/:id/update', component: UpdateTaskComponent, canActivate: [authGuard]},
+            
         ]
     },
     {path: 'login', component: AuthComponent},

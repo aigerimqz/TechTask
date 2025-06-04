@@ -53,6 +53,7 @@ export class AuthService {
   }
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('currentUser');
   }
 
   register(userData: any): Observable<any> {
