@@ -8,7 +8,13 @@ import { catchError, map, Observable, of, throwError } from 'rxjs';
 })
 export class AuthService {
   private apiUrl = `https://taskily.onrender.com/api/`;
-  constructor(private client: HttpClient) { }
+  constructor(private client: HttpClient) { 
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      this.apiUrl = 'http://127.0.0.1:8000/api/';
+    } else {
+      this.apiUrl = 'https://taskily.onrender.com/api/';
+    }
+  }
 
   
   login(userModel: User): Observable<Token> {
