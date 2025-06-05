@@ -29,8 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     
     "taskily.onrender.com",
-    "127.0.0.1",
-    "localhost",
+    "127.0.0.1"
 ]
 
 
@@ -61,19 +60,17 @@ MIDDLEWARE = [
 
 
 CORS_ALLOWED_ORIGINS = [
-    "https://example.com",
-    "https://sub.example.com",
     "http://localhost:4200",
     "http://127.0.0.1:9000",
     "https://taskily-iota.vercel.app",
 ]
 
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://taskily-iota.vercel.app"
-]
+# CSRF_TRUSTED_ORIGINS = [
+#     "https://taskily-iota.vercel.app"
+# ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -149,6 +146,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
