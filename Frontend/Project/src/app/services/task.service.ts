@@ -7,7 +7,7 @@ import { Task } from '../../models';
   providedIn: 'root'
 })
 export class TaskService {
-  private apiUrl = 'https://taskily.onrender.com/api/tasks/';
+  private apiUrl = `https://taskily.onrender.com/api/tasks/`;
   
   constructor(private client: HttpClient  ) { }
 
