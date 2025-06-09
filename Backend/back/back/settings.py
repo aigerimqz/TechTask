@@ -60,9 +60,11 @@ MIDDLEWARE = [
 
 
 CORS_ALLOWED_ORIGINS = [
+    "https://taskily-iota.vercel.app",
     "http://localhost:4200",
     "http://127.0.0.1:9000",
-    "https://taskily-iota.vercel.app",
+    
+    
 ]
 
 
