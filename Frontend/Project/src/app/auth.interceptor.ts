@@ -10,21 +10,20 @@ import { AuthService } from './services/auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-
   constructor(private authService: AuthService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const access = this.authService.getToken();
-    console.log('Interceptor adding token:', access); 
+    const isApiRequest = request.url.includes('taskily.onrender.com/api/');
 
-    if (access){
-      let newRequest = request.clone({
+    if (access && isApiRequest) {
+      const newRequest = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${access}`)
-      })
+      });
       return next.handle(newRequest);
-
     }
 
     return next.handle(request);
   }
 }
+

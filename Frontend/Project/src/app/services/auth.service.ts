@@ -2,15 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Token, User } from '../../models';
 import { catchError, map, Observable, of, throwError } from 'rxjs';
-import { environment } from '../../environments/environment';
-const API_URL = environment.apiUrl;
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  // private apiUrl = `https://taskily.onrender.com/api/`;
-
-  
+  private apiUrl = `https://taskily.onrender.com/api/`;
   constructor(private client: HttpClient) { 
    
   }
@@ -18,12 +15,12 @@ export class AuthService {
   
   login(userModel: User): Observable<Token> {
   return new Observable(observer => {
-    this.client.post<Token>(`${API_URL}login/`, userModel).subscribe({
+    this.client.post<Token>(`${this.apiUrl}login/`, userModel).subscribe({
       next: (token) => {
         localStorage.setItem('token', token.access);
 
         
-        this.client.get<User>(`${API_URL}profile/`, {
+        this.client.get<User>(`${this.apiUrl}profile/`, {
           headers: {
             Authorization: `Bearer ${token.access}`
           }
@@ -62,7 +59,7 @@ export class AuthService {
   }
 
   register(userData: any): Observable<any> {
-    return this.client.post(`${API_URL}register/`, userData).pipe(
+    return this.client.post(`${this.apiUrl}register/`, userData).pipe(
       map(response => {
   
         return response;
