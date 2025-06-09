@@ -59,14 +59,15 @@ MIDDLEWARE = [
 ]
 
 
-CORS_ALLOWED_ORIGINS = [
-    "https://taskily-iota.vercel.app",
-    "taskily-jz06lguih-aigerimqzs-projects.vercel.app",
-    "http://localhost:4200",
-    "http://127.0.0.1:9000",
+# CORS_ALLOWED_ORIGINS = [
+#     "https://taskily-iota.vercel.app",
+#     "https://taskily-jz06lguih-aigerimqzs-projects.vercel.app",
+#     "https://taskily-bt8ky6ars-aigerimqzs-projects.vercel.app",
+#     "http://localhost:4200",
+#     "http://127.0.0.1:9000",
     
     
-]
+# ]
 
 
 # CSRF_TRUSTED_ORIGINS = [
