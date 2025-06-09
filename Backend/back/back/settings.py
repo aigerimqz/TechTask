@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     
-    "taskily.onrender.com",
+    ".onrender.com",
     "127.0.0.1"
 ]
 
