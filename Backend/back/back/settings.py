@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     
-    ".onrender.com",
+    "taskily.onrender.com",
     "127.0.0.1"
 ]
 
@@ -61,6 +61,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://taskily-iota.vercel.app",
+    "taskily-jz06lguih-aigerimqzs-projects.vercel.app",
     "http://localhost:4200",
     "http://127.0.0.1:9000",
     
@@ -72,7 +73,7 @@ CORS_ALLOWED_ORIGINS = [
 #     "https://taskily-iota.vercel.app"
 # ]
 
-# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
